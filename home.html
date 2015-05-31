@@ -5,6 +5,21 @@
     <title>高思实验室</title>
     <link href="css/home.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+<script type="text/javascript">
+function SetWinHeight(ob) { 
+    var win=ob; 
+    if (document.getElementById) { 
+        if (win && !window.opera) { 
+            if (win.contentDocument && win.contentDocument.body.offsetHeight) 
+                {win.height = win.contentDocument.body.offsetHeight; }
+
+            else if(win.Document && win.Document.body.scrollHeight) 
+                {win.height = win.Document.body.scrollHeight; }
+        } 
+    } 
+} 
+ 
+</script>
 </head>
 <body>
 <div class="first">
@@ -19,7 +34,10 @@
 
     </div>
 </div>
-<div class="about " id="about">
+<iframe class="aboutIframe" id="aboutIframe" frameborder="no" scrolling="no" src="about.html" onload="SetWinHeight(this)" name="aboutIframe">
+    
+</iframe>
+<!-- <div class="about " id="about">
     <h1>关于我们</h1>
 
     <div class="line">
@@ -40,7 +58,7 @@
         </div>
     </div>
 
-</div>
+</div> -->
 <div class="news" id="name">
     <div>
         <h1>新闻公告 <a><h2>more</h2></a></h1>
