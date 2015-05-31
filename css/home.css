@@ -178,3 +178,6 @@ h1{
      margin: auto;
      display: block;
  }
+iframe{
+    width: 100%;
+}
