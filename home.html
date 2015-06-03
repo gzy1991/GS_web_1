@@ -3,10 +3,12 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>高思实验室</title>
+    <link href="css/group.css" rel="stylesheet" type="text/css">
     <link href="css/home.css" rel="stylesheet" type="text/css">
     <script type="text/javascript" src="js/jquery-2.1.4.min.js"></script>
+    <script type="text/javascript" src="js/home.js"></script>
 <script type="text/javascript">
-function SetWinHeight(ob) { 
+/*function SetWinHeight(ob) { 
     var win=ob; 
     if (document.getElementById) { 
         if (win && !window.opera) { 
@@ -18,47 +20,121 @@ function SetWinHeight(ob) {
         } 
     } 
 } 
- 
+ */
 </script>
 </head>
 <body>
-<div class="first">
-    <div class="nav">
+<div class="first" id="first">
+    <div class="nav" >
         <img class="logo" src="images/logo.png">
         <ul>
-            <li class="shadow"><a class="button" href="#" >首页</a></li>
+            <li class="shadow"><a class="button" href="#first" >首页</a></li>
             <li class="shadow"><a class="button" href="#about" >关于我们</a></li>
             <li class="shadow"><a class="button" href="#name" >新闻公告</a></li>
             <li class="shadow"><a class="button" href="#employ" >实验室诚聘</a></li>
         </ul>
 
     </div>
-</div>
-<iframe class="aboutIframe" id="aboutIframe" frameborder="no" scrolling="no" src="about.html" onload="SetWinHeight(this)" name="aboutIframe">
+</div><!--end of first-->
+
+<!-- <iframe class="aboutIframe" id="aboutIframe" frameborder="no" scrolling="no" src="about.html" onload="SetWinHeight(this)" name="aboutIframe">
     
-</iframe>
-<!-- <div class="about " id="about">
+</iframe> -->
+<div class="us">
+
+<div class="about " id="about">
     <h1>关于我们</h1>
 
     <div class="line">
-        <a class="photoLink" href="#"><div class="photo">
+        <a class="photoLink" href="fep"><div class="photo">
             <p>FEP</p>
         </div></a>
-        <a class="photoLink" href="#"> <div class="photo">
+        <a class="photoLink" href="vlab"> <div class="photo">
             <p>V-LAB</p>
         </div></a>
-       <a class="photoLink" href="#"><div class="photo">
+       <a class="photoLink" href="ome"><div class="photo">
             <p>OME</p>
         </div></a>
-        <a class="photoLink" href="#"><div class="photo">
+        <a class="photoLink" href="xnn"><div class="photo">
             <p>XNN</p>
         </div></a>
-        <a class="photoLink" href="#"><div class="photo">
-            <p>ACA</p></a>
-        </div>
+        <a class="photoLink" href="aca"><div class="photo">
+            <p>ACA</p>
+        </div></a>
     </div>
 
-</div> -->
+</div><!--end of about-->
+
+<div class="group">
+    <div class="title">
+        <img class="rectangle" src="images\rectangle.png"/>
+        <img class="FEP" src="images\FEP.png"/>
+        <img class="rectangle" src="images\rectangle.png"/>
+    </div><!--title-->
+<div class="photoBlock">
+    <div class="photoLittleBlock">
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+    </div><!--照片内分组，横排,第一组-->
+
+    <div class="photoLittleBlock">
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>           
+        </div><!--照片背景白色-->
+        <div class="photoBackground">
+            <img class="memberPhoto" src=""/>
+            <p class="nameStyle"></p>            
+        </div><!--照片背景白色-->
+    </div><!--照片内分组，横排，第二组-->
+    </div><!--照片模块-->
+</div><!--group-->
+
+</div>
+
+
+
+
+
+
 <div class="news" id="name">
     <div>
         <h1>新闻公告 <a><h2>more</h2></a></h1>
@@ -106,6 +182,11 @@ function SetWinHeight(ob) {
         <img src="images/words.jpg">
     </div>
 </div>
-<script type="text/javascript" src="js/home.js"></script>
 </body>
 </html>
+
+
+
+
+
+
