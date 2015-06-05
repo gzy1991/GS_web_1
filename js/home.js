@@ -78,6 +78,9 @@ $(".shadow .button").click(function () {	//上下滑动效果
 $(".photoLink").click(function(){  
 
 	groupName = $(this).attr("id"); 
+	var $groupImg=$(".groupName");
+	var url="images/"+ groupName +".png";
+	$groupImg.attr("src",url);
 /*****************************左右滚动***************************/
 	var firstWidth=$(".about").width(); 
 	var secondWidth=$(".group").width();
