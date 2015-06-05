@@ -12,11 +12,11 @@
  	 },500);
  }*/
 
+var groupName;         //组名
  
 $(document).ready(function(){
 
-/*****************************ajax请求***************************/
-function createRequest(){
+function createRequest(){  //创建ajax请求
 	var request;
 	if(window.XMLHttpRequest){
 		request = new XMLHttpRequest();
@@ -25,8 +25,46 @@ function createRequest(){
 		request = new ActiveXObject("Microsoft.XMLHTTP");
 		return request;
 	}
-}	
-/*****************************上下滑动效果***************************/
+}
+function loadImage (urlArray) {   //异步加载图片
+	var imgArrays = document.getElementsByClassName("memberPhoto");
+	var personNames=document.getElementsByClassName("nameStyle");
+	for (var i = 0; i<urlArray.length; i++) {
+		imgArrays[i].onload=function(){
+			imgArrays[i].onload=null;	
+		}	
+		imgArrays[i].src=urlArray[i].imgUrl;//图片对象地址
+		personNames[i].innerText=urlArray[i].userName;
+	}
+
+}
+
+function sendRequest(){
+	                       //发送请求  动态加载组员图片列表  分页
+	var request ; //ajax请求
+ 	request = createRequest();
+ 	request.onreadystatechange=function(){
+ 		if(request.readyState==4){
+ 			if((request.status>=200&&request.status<=300)||request.status==304){
+ 				var jsonStr=request.responseText;
+ 				var imgArray=JSON.parse(jsonStr);
+ 				loadImage (imgArray) ; //预加载图片并显示
+ 				/*for(var i=0;i<imgArray.length;i++){                           //显示图片
+    				$(".photoBackground .memberPhoto").eq(i).attr("src",imgArray[i]);
+    			}*/
+
+ 			}else{
+ 				alert("2请求失败");
+ 			}
+ 		}
+ 	}
+	var url=groupName+"?"+encodeURIComponent("groupName=")+encodeURIComponent(groupName);  //编辑url
+ 	request.open("get",url,true);
+ 	request.send(null);
+
+}
+
+/******************************上下滑动效果***************************/
 $(".shadow .button").click(function () {	//上下滑动效果
 	var d=$(this).attr("href");
     var scroll_offset = $(d).offset();  //得到pos这个div层的offset，包含两个值，top和left
@@ -37,36 +75,10 @@ $(".shadow .button").click(function () {	//上下滑动效果
 });
 
 
-/*****************************左右滚动***************************/
 $(".photoLink").click(function(){  
-	var request ; //ajax请求
- 	request = createRequest();
- 	request.onreadystatechange=function(){
- 		if(request.readyState==4){
- 			if((request.status>=200&&request.status<=300)||request.status==304){
- 				jsonStr=request.responseText;
- 				imgArray=JSON.parse(jsonStr);
 
- 				for(var i=0;i<imgArray.length;i++){                           //显示图片
-    				$(".photoBackground .memberPhoto").eq(i).attr("src",imgArray[i]);
-    			}
-
- 			}else{
- 				alert("2请求失败");
- 			}
- 		}
- 		else{
- 			alert("1请求失败");
- 		}
- 	}
-	var url="xxx?"+encodeURIComponent("groupName=")+encodeURIComponent(groupName);  //编辑url
- 	request.open("get",url,true);
- 	request.send(null);
-
-
-
-
-										  //左右滚动
+	groupName = $(this).attr("id"); 
+/*****************************左右滚动***************************/
 	var firstWidth=$(".about").width(); 
 	var secondWidth=$(".group").width();
  	$("body").animate({
@@ -78,34 +90,11 @@ $(".photoLink").click(function(){
 		$("body").css("overflow-y","auto");
 	});
 
-    var groupName = $(this).attr("href");  //动态加载组员图片列表  分页
     //var imgArray = ["images/GCL.jpg","images/GZY.jpg","images/HG.jpg","images/HMC.jpg","images/LDS.jpg","images/MYW.jpg","images/ZH.jpg","images/ZK.png","images/ZX.png"];
- 	
-
-/*****************************动态获取图片并显示***************************/
-/* 	var request ; //ajax请求
- 	request = createRequest();
- 	request.onreadystatechange=function(){
- 		if(request.readyState==4){
- 			if((request.status>=200&&request.status<=300)||request.status==304){
- 				jsonStr=request.responseText;
- 				imgArray=JSON.parse(jsonStr);
-
- 				for(var i=0;i<imgArray.length;i++){                           //显示图片
-    				$(".photoBackground .memberPhoto").eq(i).attr("src",imgArray[i]);
-    			}
-
- 			}else{
- 				//alert("请求失败");
- 			}
- 		}
- 	}
-	var url="xxx?"+encodeURIComponent("groupName=")+encodeURIComponent(groupName);  //编辑url
- 	request.open("get",url,true);
- 	request.send(null);*/
-
-
+	/*****************************异步加载图片***************************/
+	sendRequest();
 	return false;
+
 });
 
 
